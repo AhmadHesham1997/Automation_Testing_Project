@@ -26,6 +26,7 @@ public class P03_LoginPage {
     private final By loginButton = By.xpath("//button[@type='submit']");
     private final By invalidCredentialsMessage = By.xpath("//p[contains(text(),'لم يتم العثور على حساب نشط للبيانات المقدمة')]");
     private final By emptyPasswordErrorMessage = By.xpath("//p[contains(text(),'كلمة المرور مطلوبة')]");
+    private final By emptyEmailErrorMessage = By.xpath("//p[contains(text(),'البريد الإلكتروني مطلوب')]");
 
     //constructor
     public P03_LoginPage(WebDriver driver) {
@@ -59,6 +60,9 @@ public class P03_LoginPage {
     }
     public boolean isEmptyPasswordErrorDisplayed() {
        return driver.findElement(emptyPasswordErrorMessage).isDisplayed();
+    }
+    public boolean isEmptyEmailErrorDisplayed() {
+        return driver.findElement(emptyEmailErrorMessage).isDisplayed();
     }
 
 

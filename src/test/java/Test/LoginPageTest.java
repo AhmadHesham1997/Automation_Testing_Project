@@ -34,10 +34,14 @@ public class LoginPageTest extends BaseTest {
                 );
                 break;
 
-            case "emptyPassword":
+            case "emptyPasswordAndEmail":
                 Assert.assertTrue(
                         loginPage.isEmptyPasswordErrorDisplayed(),
                         "Empty password validation should appear"
+                );
+                Assert.assertTrue(
+                        loginPage.isEmptyEmailErrorDisplayed(),
+                        "Empty email validation should appear"
                 );
                 break;
 

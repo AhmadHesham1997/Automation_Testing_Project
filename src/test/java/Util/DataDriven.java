@@ -16,7 +16,7 @@ public class DataDriven {
     public String[][] getInvalidLoginData() {
         String[][] data = {
                 {"invalid@example.com", "invalidpassword", "invalidCredentials"},
-               {"invalid@example.com", "","emptyPassword"}};
+               {"", "","emptyPasswordAndEmail"}};
         return data;
         };
     }
