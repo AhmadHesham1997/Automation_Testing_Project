@@ -26,7 +26,6 @@ public class P06_RegistrationPage {
     private final By passwordField = By.id("password");
     private final By confirmPasswordField = By.id("confirm_password");
     private final By checkBox = By.id("terms");
-   // private final By checkBox = By.xpath("//input[@type='checkbox']");
     private final By createButton = By.xpath("//button[@type='submit']");
     private final By validationErrorMessage = By.xpath("//p[contains(text(),'الاسم مطلوب')]");
 
@@ -43,8 +42,14 @@ public class P06_RegistrationPage {
         );
         signUpBtn.click();
         wait.until(ExpectedConditions.urlContains("/auth/register"));
-        //we didnt use driver.getwindowhandles because the signup page opens in the same tab it didnt switch to new tab,
-        // so we just wait until the URL contains /auth/register to ensure that we are on the signup page
+    }
+    private void selectFromDropdown(By locator, String visibleText) {
+        WebElement element = wait.until(
+                ExpectedConditions.presenceOfElementLocated(locator)
+        );
+
+        Select select = new Select(element);
+        select.selectByVisibleText(visibleText);
     }
 
     //Entering data fields method using parameters
@@ -53,17 +58,9 @@ public class P06_RegistrationPage {
 
         driver.findElement(emailField).sendKeys(email);
 
-        WebElement countryDropdownElement = driver.findElement(countryDropdown);
-        Select countrySelect = new Select(countryDropdownElement);
-        countrySelect.selectByVisibleText(country);
-
-        WebElement cityDropdownElement = driver.findElement(cityDropdown);
-        Select citySelect = new Select(cityDropdownElement);
-        citySelect.selectByVisibleText(city);
-
-        WebElement genderDropdownElement = driver.findElement(genderDropdown);
-        Select genderSelect = new Select(genderDropdownElement);
-        genderSelect.selectByVisibleText(gender);
+        selectFromDropdown(countryDropdown, country);
+        selectFromDropdown(cityDropdown, city);
+        selectFromDropdown(genderDropdown, gender);
 
         driver.findElement(phoneNumberField).sendKeys(phone);
 

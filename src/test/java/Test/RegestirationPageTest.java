@@ -5,6 +5,7 @@ package Test;
 //•	Assert validation error message are displayed “مطلوب المستخدم اسم”
 import Base.BaseTest;
 import Pages.P06_RegistrationPage;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class RegestirationPageTest extends BaseTest {
@@ -22,9 +23,6 @@ public class RegestirationPageTest extends BaseTest {
         registrationPage.clickCreateButton();
 
         //Assert that the validation error message is displayed when username field is empty
-        boolean actual = registrationPage.isValidationErrorMessageDisplayed();
-        assert actual : "Validation error message is not displayed!";
+        Assert.assertTrue(registrationPage.isValidationErrorMessageDisplayed(), "Validation error message should be displayed when username field is empty");
     }
-
-
 }
