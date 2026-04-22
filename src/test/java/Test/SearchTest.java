@@ -12,10 +12,11 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class SearchTest extends BaseTest {
+    P01_HomePage homePage;
     @Test
     public void SearchTest()
     {
-        P01_HomePage homePage = new P01_HomePage(driver);
+        homePage = new P01_HomePage(driver);
         //search method
         homePage.search("كيف تنضم إلى البنك");
         //Assertion

@@ -24,7 +24,7 @@ public class P01_HomePage {
         this.driver = driver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
-
+    // Search method to perform search action
     public void search(String text) {
         WebElement field = wait.until(
                 ExpectedConditions.visibilityOfElementLocated(searchField));
@@ -37,7 +37,7 @@ public class P01_HomePage {
 
         result.click();
     }
-
+    //Assertion Method
     public boolean isHeaderDisplayed() {
         WebElement headerElement = wait.until(
                 ExpectedConditions.visibilityOfElementLocated(header));
