@@ -1,6 +1,7 @@
 package Pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -20,13 +21,15 @@ public class P02_CoursesPage {
 
     //locators
     private final By dropDownTitle = By.xpath("//a[text()='الدورات التدريبية']");
-    private final By courseTitle = By.xpath("//h3[text()='تحليل البيانات عبر Power BI']");
+    private final By courseTitle = By.xpath("//h3[text()='إدارة التغيير والعمل الجماعي']");
     private final By aboutSection = By.id("overview");
+    private final By subscribeButton = By.xpath("(//button[text()='اشترك الآن'])[3]");
+    private final By myCardCourseTitle = By.xpath("//a[text()='إدارة التغيير والعمل الجماعي']");
 
     //Constructor to initialize the WebDriver instance that will be passed from the test class (Features.F02_Courses)
     public P02_CoursesPage(WebDriver driver) {
         this.driver = driver;
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(100));
     }
 
     public void gettingCourses()
@@ -43,10 +46,9 @@ public class P02_CoursesPage {
     public void selectCourse()
     {
         WebElement course = wait.until(
-                ExpectedConditions.visibilityOfElementLocated(courseTitle)
+                ExpectedConditions.elementToBeClickable(courseTitle)
         );
         course.click();
-        //driver.findElement(courseTitle).click();
     }
     //Asserting the about section
 
@@ -57,5 +59,30 @@ public class P02_CoursesPage {
         return about.isDisplayed();
     }
 
+    /******************************************************************************/
+    //Test Case #7: end-to-end
+    //•	log in to the website
+    //•	From the side menu or header, click all courses
+    //•	Subscribe to any course
+    //•	Assert that your card will contain the selected course
+    //Note that:
+    //-	The user must be logged in with valid credentials
+    //-	Data can be hardcoded or read from config
+
+
+    //Clicking on subcribe button Method
+    public void clickSubscribeButton() {
+        WebElement subscribeBtn = wait.until(
+                ExpectedConditions.elementToBeClickable(subscribeButton)
+        );
+       subscribeBtn.click();
+    }
+    //Asserting that my card contains the selected course by validating course title
+    public boolean isCourseInMyCard() {
+        WebElement courseInCard = wait.until(
+                ExpectedConditions.visibilityOfElementLocated(myCardCourseTitle)
+        );
+        return courseInCard.isDisplayed();
+    }
 
 }

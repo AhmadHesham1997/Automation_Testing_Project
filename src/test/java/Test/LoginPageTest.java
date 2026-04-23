@@ -22,7 +22,7 @@ public class LoginPageTest extends BaseTest {
     @Test(dataProvider = "invalidLoginData", dataProviderClass = DataDriven.class)
     public void testInvalidLogin(String email, String password,String scenario) {
         loginPage = new P03_LoginPage(driver);
-        loginPage.clickLogin();
+        loginPage.clickLoginButtonHomePage();
         loginPage.enterLoginData(email, password);
         loginPage.clickLoginButton();
         switch (scenario) {

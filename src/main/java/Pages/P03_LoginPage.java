@@ -34,7 +34,7 @@ public class P03_LoginPage {
         wait = new WebDriverWait(driver, java.time.Duration.ofSeconds(100));
     }
     //Method to click on login button in home page
-    public void clickLogin() {
+    public void clickLoginButtonHomePage() {
         WebElement loginBtn = wait.until(
                 ExpectedConditions.elementToBeClickable(loginButonHomePage)
         );
