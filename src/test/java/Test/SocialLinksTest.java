@@ -19,10 +19,33 @@ public class SocialLinksTest extends BaseTest {
         socialPage.switchToNewTab();
 
         Assert.assertTrue(
-                socialPage.isFacebookUrlCorrect(),
+                socialPage.isUrlContains("facebook.com"),
                 "Facebook URL is incorrect"
         );
     }
 
+    @Test
+    public void xLinksTest(){
+        socialPage = new P05_SocialPage(driver);
+        socialPage.clickXIcon();
+        socialPage.switchToNewTab();
+
+        Assert.assertTrue(
+                socialPage.isUrlContains("x.com"),
+                "X URL is incorrect"
+        );
+    }
+
+    @Test
+    public void linkedinLinksTest(){
+        socialPage = new P05_SocialPage(driver);
+        socialPage.clickLinkedinIcon();
+        socialPage.switchToNewTab();
+
+        Assert.assertTrue(
+                socialPage.isUrlContains("linkedin.com"),
+                "LinkedIn URL is incorrect"
+        );
+    }
 
 }

@@ -16,43 +16,56 @@ public class P05_SocialPage {
     WebDriver driver;
     WebDriverWait wait;
 
-    //Locators
-    final private By facebookIcon = By.xpath("//footer//a[contains(@href,'facebook')]");
-    final private By twitterIcon = By.xpath("//footer//a[contains(@href,'twitter')]");
-    final private By linkedinIcon = By.xpath("//footer//a[contains(@href,'linkedin')]");
+    // Locators
+    private final By facebookIcon = By.xpath("//footer//a[contains(@href,'facebook')]");
+    private final By xIcon = By.xpath("//footer//a[contains(@href,'x')]");
+    private final By linkedinIcon = By.xpath("//footer//a[contains(@href,'linkedin')]");
 
-    //construct
+    // Constructor
     public P05_SocialPage(WebDriver driver) {
         this.driver = driver;
-        wait = new WebDriverWait(driver, Duration.ofSeconds(100));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(20));
     }
 
-    //Method to click on Facebook icon
-    // Method to scroll + click Facebook icon
-    public void clickFacebookIcon() {
+    // Generic click method
+    private void clickSocialIcon(By locator) {
 
-        WebElement facebook = wait.until(
-                ExpectedConditions.presenceOfElementLocated(facebookIcon)
+        WebElement icon = wait.until(
+                ExpectedConditions.presenceOfElementLocated(locator)
         );
 
         JavascriptExecutor js = (JavascriptExecutor) driver;
 
-        js.executeScript("arguments[0].scrollIntoView({block:'center'});", facebook);
+        js.executeScript("arguments[0].scrollIntoView({block:'center'});", icon);
 
-        wait.until(ExpectedConditions.visibilityOf(facebook));
+        wait.until(ExpectedConditions.visibilityOf(icon));
 
-        js.executeScript("arguments[0].click();", facebook);
+        js.executeScript("arguments[0].click();", icon);
     }
-    //Switch tab
-    public void switchToNewTab() {
 
+    // Generic URL validation
+    public boolean isUrlContains(String expectedUrl) {
+        return driver.getCurrentUrl().contains(expectedUrl);
+    }
+
+    // Switch tab
+    public void switchToNewTab() {
         for (String tab : driver.getWindowHandles()) {
             driver.switchTo().window(tab);
         }
     }
-    //Assertion
-    public boolean isFacebookUrlCorrect() {
-        return driver.getCurrentUrl().contains("facebook.com");
+
+    // Public actions
+    public void clickFacebookIcon() {
+        clickSocialIcon(facebookIcon);
+    }
+
+    public void clickXIcon() {
+        clickSocialIcon(xIcon);
+    }
+
+    public void clickLinkedinIcon() {
+        clickSocialIcon(linkedinIcon);
     }
 
 }
