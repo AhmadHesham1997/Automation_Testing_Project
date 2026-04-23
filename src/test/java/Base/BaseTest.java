@@ -36,11 +36,11 @@ public class BaseTest {
     }
 
     //tear down
-//    @AfterMethod
-//     public void tearDown() {
-//        //code to close the browser
-//         driver.quit();
-//    }
+    @AfterMethod
+    public void tearDown() {
+       //code to close the browser
+       driver.quit();
+   }
 
 
 
