@@ -92,19 +92,10 @@ Test Case #11: Verify course cards UI
 o	Course image
 o	Course title
 o	Instructor name
-o	subscribe button
+o	subscribe 
 
-
-
-
-Bonus (Optional):
 •	Generate an Allure Report for the test execution.
 •	The report should include test cases, steps, and execution results.
  
-Submission Instructions:
-•	Create a new GitHub repository for this project named: automation-testing-project.
-•	Push your complete project to the repository.
-•	Make sure your repository is set to Public.
-•	Send your repo link via email to: Soadmagdy.route@gmail.com
-•	Please make sure to strictly follow the email subject format below when sending your task:
+
 
